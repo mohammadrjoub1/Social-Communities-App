@@ -1,0 +1,136 @@
+<div id="thenavman" class="fixed-top " style="background-color: black;width: 100%">
+  <div class="row" >
+    <div style="float: left;width: 40%;">
+      <div style="float: left;width:auto;margin-left: 30px;margin-top: 17px;">
+        <a [routerLink]="['']"><h6 style="display: inline;background-color: tomato;border-radius: 50%;height: 40px;width: 40px;;"><i style="color: white;" > <i  class="fas fa-cat fa-lg"></i></i></h6></a>
+   
+        <a  style="margin-left: 10px;" [routerLink]="['categories']" ><h6 style="display: inline;">Categories</h6> </a>
+  
+      </div>
+    </div>
+  
+ 
+ <div style="width: 60%;">
+  <div *ngIf="loggedIn"  style="float: left;width:auto;;"  >
+ 
+    <button style="border-style: none;;margin-top: 3px;"  *ngIf="loggedIn" class="btn btn-outline"    mat-button [matMenuTriggerFor]="menu"><h6 style="display: inline;color: white;">{{nowIn}} </h6><i  style="color: red;"  class="fas fa-caret-down"></i></button>
+    <mat-menu #menu="matMenu">
+      <button  (click)="goToHome()" mat-menu-item>Home</button>
+      <button (click)="goToAll()" mat-menu-item>All</button>
+    </mat-menu>
+      
+
+</div>
+
+
+<div *ngIf="loggedIn"  style="float: right;width:auto"  >
+ 
+  <button style="border-style: none;display: inline;margin-right: 5px;overflow:hidden;"  *ngIf="loggedIn" class="btn btn-outline"    mat-button [matMenuTriggerFor]="menu">
+    <div style="  object-fit: cover;width: 30px;height: 30px;border-radius: 50%;transform: translateZ(0);overflow: hidden;display: inline;">
+      <img   src="{{user?.imageUrl}}" style=" height: 30px;width: 30px;display: inline;overflow:hidden;; background-color: black;">
+	
+    </div>
+   <div style="display: inline;padding-left: 10px;margin-top:0px; ">
+     <i  style="color: white;display: inline;margin-top: 5px;"  class="fas fa-caret-down"></i>
+  </div>
+</button>
+
+ <mat-menu #menu="matMenu">
+   <button  (click)="goToMyProfile()" mat-menu-item>View your profile </button>
+   <button (click)="logout()" mat-menu-item>Logout</button>
+ </mat-menu>
+</div>
+
+<div *ngIf="!loggedIn"  style="float: right;margin-top: -8px;margin-bottom: -8px;">
+  
+     <div *ngIf="!loggedIn&&showLoginForm" style="display: inline;" >
+       <form #MyLogInForm="ngForm" class="form-inline " (ngSubmit)="login()" style="display: inline;">
+         <input class="form-control mr-sm-2" id="username" name="username" type="text" placeholder="Username" [(ngModel)]="model.username">
+         <input class="form-control mr-sm-2" id="password" name="password" type="password" placeholder="Password" [(ngModel)]="model.password">
+         <button class="btn btn-outline-success my-2 my-sm-0 rounded-pill" style="margin-right: -10px;" type="submit">Login</button>
+ 
+       </form>
+ 
+  </div>
+  <button *ngIf="!showLoginForm" class="btn btn-outline-success rounded-pill " (click)="showTheLoginForm()" style="display: inline;background-color: black;color: white;border-color: white;font-style:inherit;" type="submit">Login</button>
+
+  <a  style="text-decoration: none;display: inline;margin-right: 30px;" [routerLink]="['/user/register']"><button type="button" class="btn btn-primary m-3 rounded-pill" style=" display: inline;background-color: white;color: black;border-color: black;font-style:inherit;">Sign Up</button></a>
+
+  </div>
+
+</div>
+
+    
+  </div>
+
+
+</div>
+<div id="dasd"  style="background-color: black;width: 200%;margin-left: -1300px;">
+  <div class="row" >
+    <div style="float: left;width: 40%;">
+      <div style="float: left;width:auto;margin-left: 30px;margin-top: 10px;">
+        <a [routerLink]="['']"><h6 style="display: inline;"><i style="color: red;" class="fas fa-home"> Red1t</i></h6></a>
+   
+        <a  style="margin-left: 10px;" [routerLink]="['categories']" ><h6 style="display: inline;">Categories</h6> </a>
+  
+      </div>
+    </div>
+  
+ 
+ <div style="width: 60%;">
+  <div *ngIf="loggedIn"  style="float: left;width:auto;;"  >
+ 
+    <button style="border-style: none;;margin-top: 3px;"  *ngIf="loggedIn" class="btn btn-outline"    mat-button [matMenuTriggerFor]="menu"><h6 style="display: inline;color: white;">{{nowIn}} </h6><i  style="color: red;"  class="fas fa-caret-down"></i></button>
+    <mat-menu #menu="matMenu">
+      <button  (click)="goToHome()" mat-menu-item>Home</button>
+      <button (click)="goToAll()" mat-menu-item>All</button>
+    </mat-menu>
+      
+
+</div>
+
+
+<div *ngIf="loggedIn"  style="float: right;width:auto"  >
+ 
+  <button style="border-style: none;display: inline;margin-right: 5px;overflow:hidden;"  *ngIf="loggedIn" class="btn btn-outline"    mat-button [matMenuTriggerFor]="menu">
+    <div style="  object-fit: cover;width: 30px;height: 30px;border-radius: 50%;transform: translateZ(0);overflow: hidden;display: inline;">
+      <img   src="{{user?.imageUrl}}" style=" height: 30px;width: 30px;display: inline;overflow:hidden;; background-color: black;">
+	
+    </div>
+   <div style="display: inline;padding-left: 10px;margin-top:0px; ">
+     <i  style="color: white;display: inline;margin-top: 5px;"  class="fas fa-caret-down"></i>
+  </div>
+</button>
+
+ <mat-menu #menu="matMenu">
+   <button  (click)="goToMyProfile()" mat-menu-item>View your profile </button>
+   <button (click)="logout()" mat-menu-item>Logout</button>
+ </mat-menu>
+</div>
+
+<div *ngIf="!loggedIn"  style="float: right;margin-top: -8px;margin-bottom: -8px;">
+  
+     <div *ngIf="!loggedIn&&showLoginForm" style="display: inline;" >
+       <form #MyLogInForm="ngForm" class="form-inline " (ngSubmit)="login()" style="display: inline;">
+         <input class="form-control mr-sm-2" id="username" name="username" type="text" placeholder="Username" [(ngModel)]="model.username">
+         <input class="form-control mr-sm-2" id="password" name="password" type="password" placeholder="Password" [(ngModel)]="model.password">
+         <button class="btn btn-outline-success my-2 my-sm-0 " style="margin-right: -10px;" type="submit">Login</button>
+ 
+       </form>
+ 
+  </div>
+  <button *ngIf="!showLoginForm" class="btn btn-outline-success  " (click)="showTheLoginForm()" style="margin-right: -10px;" type="submit">Login</button>
+
+  <a  style="text-decoration: none;display: inline;" [routerLink]="['/user/register']"><button type="button" class="btn btn-primary m-3" style="display: inline;">SignUp</button></a>
+
+  </div>
+
+</div>
+
+    
+  </div>
+
+
+</div>
+ 
+<div name="mr-padder" style="height: 4px;"></div>

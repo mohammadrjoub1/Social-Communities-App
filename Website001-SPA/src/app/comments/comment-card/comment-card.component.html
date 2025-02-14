@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+     
+      <div class="card-title">
+        <div style="width: 30px;height: 30px;border-radius: 50%;overflow: hidden;">
+          <img   src="{{user?.imageUrl}}" style="float: left; height: 30px;width: 30px; background-color: black;">
+    
+        </div>
+        <div style="float: left;;margin-top: -25px;margin-left: 36px;">
+          <a [routerLink]="['/user',user?.username]">{{user?.username}}</a> 
+          {{comment.date | timeago}}
+
+       
+        </div>
+
+      </div>
+      <p style="margin-left: 36px;" class="card-text">{{comment?.comment}}</p>
+     </div>
+     <div *ngIf="disableReplyButton==false">
+      <div *ngIf="this.authService.logged&&showReplyBoxValue!=1">
+        <button type="button"  (click)="showReplyBox()" class="btn btn-primary rounded-pill" style="background-color: white;color: black;border-color: black;font-style:inherit;margin-bottom: 10px ;margin-left: 20px;">Reply</button>
+
+      </div>
+      <div *ngIf="!this.authService.logged">
+         <a  style="text-decoration: none;" [routerLink]="['/user/register']"><button type="button" class="btn btn-primary rounded-pill" style="background-color: white;color: black;border-color: black;font-style:inherit;margin-bottom: 10px ;margin-left: 20px;">Reply</button></a>
+
+      </div>
+ 
+     </div>
+     
+       <div *ngIf="showReplyBoxValue==1">
+        <app-add-comment-card  [post]="post"   [parentComment]="parentComment"></app-add-comment-card>
+      </div>
+    </div>
+

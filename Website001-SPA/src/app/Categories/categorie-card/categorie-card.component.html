@@ -1,0 +1,22 @@
+
+ 
+                        
+    <div style="float: left;;width: 30px;height: 30px;border-radius: 50%;overflow: hidden;">
+                            <img  [routerLink]="['/categories',categorie.title]"   src="{{categorie?.imageUrl}}"  style="height: 30px;width: 30px; background-color: black;">
+                      
+                          </div>
+                    <a style="margin-left: 10px;float: left;margin-top: 4px;" [routerLink]="['/categories',categorie.title]">{{categorie.title}}</a>
+        
+  <div >
+    <div *ngIf="this.authService.logged" style="float: right;">
+        <button *ngIf="isUserJoined" type="button" (click)="leaveCategorie()" class="btn btn-primary  rounded-pill" style=" display: inline;background-color: black;color: white;border-color: white;font-style:inherit;">Leave</button>
+        <button *ngIf="!isUserJoined" type="button"  (click)="joinCategorie()" class="btn btn-primary  rounded-pill" style=" display: inline;background-color: white;color: black;border-color: black;font-style:inherit;">+ Join</button>
+        
+    </div>
+    <div *ngIf="!this.authService.logged"  style="float: right;">
+
+        <a  style="text-decoration: none;display: inline;" [routerLink]="['/user/register']"><button type="button" class="btn btn-primary  rounded-pill" style=" display: inline;background-color: white;color: black;border-color: black;font-style:inherit;">+ Join</button></a>
+
+ 
+    </div>
+</div>

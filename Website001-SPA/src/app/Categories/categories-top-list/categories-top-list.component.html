@@ -1,0 +1,27 @@
+<div  >
+		
+    <div class="card"  >
+    
+         <div class="card-header">
+            Trending Communities
+        </div>
+ 
+         <ul class="list-group list-group-flush">
+             
+            <li *ngFor="let cat of categories" class="list-group-item"  style="cursor: pointer;" [routerLink]="['/categories',cat.title]">
+                <div style="float: left;;width: 30px;height: 30px;border-radius: 50%;overflow: hidden;">
+                    <img   src="{{cat?.imageUrl}}" style="height: 30px;width: 30px; background-color: black;">
+              
+                  </div>
+            <a style="margin-left: 10px;float: left;margin-top: 4px;" [routerLink]="['/categories',cat.title]">{{cat.title}}</a>
+
+            </li>
+         </ul>
+        
+    </div>
+    <div class="list-group-item" style="text-align: center;" >
+        <a  style="text-decoration: none;display: inline;margin: auto;" [routerLink]="['/categories']"><button type="button" class="btn btn-primary rounded-pill" style="width: 90%; display: inline;background-color: white;color: black;border-color: black;font-style:inherit;">View all</button></a>
+    </div>
+
+</div>
+            

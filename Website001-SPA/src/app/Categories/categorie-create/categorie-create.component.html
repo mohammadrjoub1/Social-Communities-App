@@ -1,0 +1,33 @@
+<h1>Create Community</h1>
+ 
+<div class="container" style="overflow: hidden;width: 70%;max-height:1000px;margin: auto;background-color: #1a1a1b;"> 
+  <form #postForm="ngForm"  class="cf">
+    <div class="form-group" style="margin-top: 73px;">
+      <div class="half left cf">
+         <input  id="input-name"  name="title" [(ngModel)]="title" type="text" class="form-control" id="title" placeholder="Title">
+
+        <ul style="display: inline;list-style: none;">
+          <li style="margin-top: 20px;margin-left: 13px;float: left;;">Image</li>
+          <li style="margin-top: -20px;float: left;"> <input (change)="onFilesSelected($event)" type="file" name="image" id="input-name" placeholder="Picture">        </li>
+         </ul>
+       </div>
+       <div class="half right cf">
+        <textarea [(ngModel)]="about" name="about" type="text" id="input-message" placeholder="About"></textarea>
+      </div> 
+
+    </div>
+ 
+         <div style="text-align: center;margin: 4px;">
+           <div *ngIf="clicked==1" style="margin-bottom: 20px;;">
+             <mat-spinner style="margin-bottom: 5px; margin: auto;"></mat-spinner>
+           </div>
+          
+           <button *ngIf="clicked==0" id="input-submit" [disabled]="!title" class="btn btn-outline-success my-2 my-sm-0 mt-3"  (click)="createCategorie()" style="margin: auto;" type="submit">Create Now</button>
+           <a  *ngIf="clicked==1" href="#" class="btn btn-danger btn-lg disabled" role="button" aria-disabled="true">Create Now</a>
+
+         </div>
+  
+  </form>  
+
+
+  </div>

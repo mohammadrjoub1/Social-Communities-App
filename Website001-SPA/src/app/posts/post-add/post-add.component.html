@@ -1,0 +1,79 @@
+
+       <section>
+        <mat-button-toggle-group [(ngModel)]="postTypeId" aria-label="Font Style">
+         <mat-button-toggle value="1">Text</mat-button-toggle>
+         <mat-button-toggle value="2">Image</mat-button-toggle>
+    
+       </mat-button-toggle-group>
+     </section>
+     
+    
+    <div *ngIf="postTypeId==1">
+
+
+         <div class="container mt-3 col-10" style="background-color: dimgray;">
+           <br>
+           <h5>This post will apear on {{destinationTitle}} if everything goes right</h5>
+         
+         <form #postForm="ngForm"  (ngSubmit)="addPost()" >
+           <div class="form-group">
+             <label for="title">Title</label>
+             <input  name="title" [(ngModel)]="postToAddDto.title" type="text" class="form-control" id="title" placeholder="Title">
+           </div>
+           <div class="form-group">
+             <label for="Categorie">Categorie</label>
+             <select class="form-control" id="Categorie">
+               <option>{{destinationTitle}}</option>
+           
+             </select>
+           </div>
+           
+           <div class="form-group">
+             <label rows="10" for="exampleFormControlTextarea1">Post goes here</label>
+             <textarea name="content" [(ngModel)]="postToAddDto.content" type="text" class="form-control" id="content" placeholder="content"></textarea>
+           </div>
+           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Post</button>
+         
+         </form>  
+         
+       </div>
+     </div>
+
+    <div *ngIf="postTypeId==2"  class="container" style="overflow: hidden;width: 70%;max-height:1000px;margin: auto;background-color: #1a1a1b;"> 
+     <form #postForm="ngForm"  >
+       <div class="form-group" style="margin-top: 73px;">
+         <input  name="title" [(ngModel)]="postToAddDto.title" type="text" class="form-control" id="title" placeholder="Title">
+       </div>
+
+ 
+
+       <input *ngIf="clicked==0" type="file" (change)="onFilesSelected($event)">
+ 
+    
+  
+            <div style="text-align: center;margin: 4px;">
+
+              
+              <div style="margin-bottom: 20px;;">
+                <img [src]="imgURL"  style="margin-bottom: 5px; margin: auto;width: 100%;max-height: 600px;" height="auto" *ngIf="imgURL">
+              </div>
+             
+
+              <div *ngIf="clicked==1" style="margin-bottom: 20px;;">
+                <mat-spinner style="margin-bottom: 5px; margin: auto;"></mat-spinner>
+              </div>
+             
+              <button *ngIf="clicked==0" [disabled]="!postToAddDto.title||!imgURL" class="btn btn-outline-success my-2 my-sm-0 mt-3"  (click)="addPost()" style="margin: auto;" type="submit">Post</button>
+              <a  *ngIf="clicked==1" href="#" class="btn btn-danger btn-lg disabled" role="button" aria-disabled="true">Post</a>
+
+            </div>
+     
+     </form>  
+
+ 
+     </div>
+ 
+
+ 
+
+  

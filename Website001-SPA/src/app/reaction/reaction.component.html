@@ -1,0 +1,34 @@
+<div *ngIf="loggedIn()"  class="btn-group" role="group" aria-label="Basic example">
+ 
+    
+    <div *ngFor="let reaction of array2;index as i">
+        <div *ngFor="let obj of array3;index as j">
+            <div class="m-1"  *ngIf="j==i">
+                <button  [style.background-color]="reactedTo==reaction ? 'red' : 'black'" style="display: inline;color: white;font-style:inherit;"  class="btn btn-secondary  rounded-pill "  type="button" (click)="react(reaction)" >{{reaction}} {{obj}}</button>
+
+            </div>
+        
+        </div>
+
+    </div>
+    
+</div> 
+
+<div *ngIf="!loggedIn()"  class="btn-group" role="group" aria-label="Basic example">
+ 
+    
+    <div *ngFor="let reaction of array2;index as i">
+        <div *ngFor="let obj of array3;index as j">
+            <div class="m-1"  *ngIf="j==i">
+                <a  style="text-decoration: none;" [routerLink]="['/user/register']">                <button   type="button" style="display: inline;background-color: black;color: white;font-style:inherit;"  class="btn btn-secondary  rounded-pill ">{{reaction}} {{obj}}</button>
+                </a>
+
+            </div>
+        
+        </div>
+
+    </div>
+    
+</div> 
+
+

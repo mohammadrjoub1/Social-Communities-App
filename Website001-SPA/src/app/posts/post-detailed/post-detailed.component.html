@@ -1,0 +1,44 @@
+ 
+
+<div class="row">
+  
+    <div class="col-sm-8"> 
+<div class="card"  >
+    <h4>{{post?.title}} </h4>
+
+    <img class="card-img-top" src="{{post?.imageUrl}}" alt="Card image cap">
+    <div class="card-body">
+        <p class="card-text">{{post.content}}</p>
+        <div class="card-text">By   <a [routerLink]="['/user',post.author.user?.username]">{{post.author.user.username}} </a> </div>
+    </div>
+    <app-add-comment-card   [post]="post" [parentComment]="parentComment"></app-add-comment-card>
+<div *ngFor="let comment of comments">
+    <div *ngIf="comment.parentCommentId==0">
+        <app-comment-card   [disableReplyButton]="false" [post]="post"  [comment]="comment" [parentComment]="comment?.id"></app-comment-card>
+
+        <div *ngFor="let c of comments">
+            <div *ngIf="c.parentCommentId==comment.id" style="padding-left: 30px;" >
+                <app-comment-card   [disableReplyButton]="false" [post]="post"  [comment]="c" [parentComment]="comment?.id"></app-comment-card>
+                <div *ngFor="let c2 of comments">
+                    <div *ngIf="c2.parentCommentId==c.id" style="padding-left: 30px;">
+                        <app-comment-card  [disableReplyButton]="false"   style="margin-left: 30px;" [post]="post"  [comment]="c2" [parentComment]="comment?.id"></app-comment-card>
+                        <div *ngFor="let c3 of comments">
+                            <div *ngIf="c3.parentCommentId==c2.id" style="padding-left: 30px;">
+                                <app-comment-card [disableReplyButton]="true" style="margin-left: 30px;" [post]="post"  [comment]="c3" [parentComment]="comment?.id"></app-comment-card>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+</div>
+
+
+  

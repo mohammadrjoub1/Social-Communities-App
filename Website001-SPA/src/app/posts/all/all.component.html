@@ -1,0 +1,51 @@
+ 
+  <div class="row">
+    
+    <div class="col-sm-8"> 
+      <div class="col-sm-12" style="background-color: #1a1a1b;margin-top: 10px;"> 
+        <section style="padding-top: 10px;padding-bottom: 10px;">
+          <mat-button-toggle-group [(ngModel)]="sortBy" aria-label="Font Style" style="border-style: none;">
+            
+            <mat-button-toggle  [style.background-color]="sortBy=='Top' ? '#272729' : '#1a1a1b'"    class=" rounded-pill" (click)="addPosts()" value="Top"  style="border-style: none;color: white;margin-right: 10px; ">   Top   <span class="material-icons">
+              leaderboard
+              </span>
+            </mat-button-toggle>
+       
+            <mat-button-toggle  [style.background-color]="sortBy=='New' ? '#272729' : '#1a1a1b'"    class=" rounded-pill" (click)="addPosts()"  value="New"  style="border-style: none;color: white;margin-right: 10px; ">    New   <span class="material-icons">
+              track_changes
+              </span>
+            </mat-button-toggle>
+       
+          </mat-button-toggle-group>
+        </section>
+        
+      </div>
+    <div *ngFor="let post of posts" class="row">
+        <div class="col-sm-12 mt-3 " style="width: 100%;">
+            <app-post-card  [isJoind]="true" [showJoiningToCategorieOption]="showJoiningToCategorieOption" [post]="post"></app-post-card>
+        </div>
+      </div>
+  <div *ngIf="continueLoading" class=" col-sm-12 mt-3" style="text-align: center; width: 100%;">
+    <div class="fa-3x">
+      <i class="fas fa-spinner fa-spin"></i>
+  
+    </div>
+    <div *ngIf="1>2">  <button type="button" class="btn btn-success col-sm-8 mt-3" (click)="addMorePosts()">Load more</button>
+    </div>
+  
+  </div>
+  
+  <div *ngIf="!continueLoading" class=" col-sm-12 mt-3" style="text-align: center; width: 100%;">
+    <div class="alert alert-danger" role="alert">
+      No more posts to show
+    </div></div>
+  </div>
+  
+  </div>
+  <div
+  class="search-results"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+  ></div>

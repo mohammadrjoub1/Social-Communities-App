@@ -1,0 +1,137 @@
+<div class="coverEdit" *ngIf="this.user?.id==this.categorie?.userId">
+  <form #asd="ngForm"  style="margin-bottom: -60px;position: relative;">
+    <label for="image" >         
+        <div class="btn btn-primary btn-sm float-left" >
+            <i class="fas fa-edit"></i> 
+        </div>
+  
+    </label>
+        <input  style="display: none;" name="image" id="image" class="das" type="file" (change)="onFilesSelectedCoverPicture($event)" >
+  
+  </form>
+
+  </div>
+  <img  src="{{categorie?.coverUrl}}" style="margin-left: -17px;width: 109%;height: 200px;margin-bottom: 20px;">
+  <div *ngIf="showSpiner" style="max-height: 30px;max-width: 30px;;" >
+    <mat-spinner  ></mat-spinner>
+
+</div>
+  <div style="text-align: center; margin-top: -100px;">
+    <div style="width: 150px;height: 150px;margin-top: -100px;border-radius: 50%;overflow: hidden;margin: auto;text-align: center;">
+      <img   src="{{categorie?.imageUrl}}" style="height: 150px;width: 150px; background-color: black;">
+
+    </div>
+
+  <div class="coverEdit" *ngIf="this.user?.id==this.categorie?.userId">
+    <form #asd="ngForm"  style="margin-bottom: -60px;position: relative;">
+      <label for="zxc" style="margin-top: -10px;" >         
+          <div class="btn btn-primary btn-sm float-left" >
+              <i class="fas fa-edit"></i> 
+          </div>
+    
+      </label>
+          <input  style="display: none;" name="zxc" id="zxc" class="das" type="file" (change)="onFilesSelectedProfilePicture($event)" >
+    
+    </form>
+    </div>
+ </div>
+
+
+<div class="row mt-3">
+      <div class="col-sm-8">
+        <a ><button (click)="post()" class="btn btn-success col-sm-12 mb-3" > Post on this categorie  </button></a>
+
+      </div>
+
+</div>
+
+<div class="row">
+  
+    <div class="col-sm-8"> 
+      <div  style="background-color: #1a1a1b;margin-top: 10px;"> 
+        <section style="padding-top: 10px;padding-bottom: 10px;" class="col-sm-12">
+          <mat-button-toggle-group [(ngModel)]="sortBy" aria-label="Font Style" style="border-style: none;" class="col-sm-12">
+            
+            <mat-button-toggle  [style.background-color]="sortBy=='Top' ? '#272729' : '#1a1a1b'"    class=" rounded-pill" (click)="addPosts()" value="Top"  style="border-style: none;color: white;margin-right: 10px; ">   Top   <span class="material-icons">
+              leaderboard
+              </span>
+            </mat-button-toggle>
+       
+            <mat-button-toggle  [style.background-color]="sortBy=='New' ? '#272729' : '#1a1a1b'"    class=" rounded-pill" (click)="addPosts()"  value="New"  style="border-style: none;color: white;margin-right: 10px; ">    New   <span class="material-icons">
+              track_changes
+              </span>
+            </mat-button-toggle>
+       
+          </mat-button-toggle-group>
+        </section>
+        
+      </div>  
+    <div *ngFor="let post of posts" class="row">
+        <div class="mt-3 col-sm-12">
+            <app-post-card  [isJoind]="true" [showJoiningToCategorieOption]="showJoiningToCategorieOption" [post]="post"></app-post-card>
+        </div>
+      </div>
+      <div *ngIf="continueLoading" style="text-align: center; width: 100%;">
+        <div class="fa-3x">
+          <i class="fas fa-spinner fa-spin"></i>
+      
+        </div>
+        <div *ngIf="1>2">  <button type="button" class="btn btn-success col-sm-8 mt-3" (click)="addMorePosts()">Load more</button>
+        </div>
+      
+      </div>
+      
+      <div *ngIf="!continueLoading" style="text-align: center; width: 100%;">
+        <div class="alert alert-danger mt-2" role="alert">
+          No more posts to show
+        </div></div>
+
+    </div>
+    <div class="col-sm-4"> 
+     
+  
+
+          <div  >
+		
+            <div class="card"  >
+            
+                 <div class="card-header">
+                  {{categorie.title}}
+                </div>
+         
+                 <ul class="list-group list-group-flush">
+                     
+                  <li  class="list-group-item" >
+                    <p class="card-text">{{categorie.about}}</p>
+                      <p class="card-text"><b>Members</b> : {{numberOfMembersOfCategorie}}</p>
+                      <p class="card-text"><b>Created</b> : {{this.categorie.date  | date:'mediumDate'}}</p>
+          
+                    </li>
+                    <li  class="list-group-item" >
+                      <div class="card-header">
+                        <div *ngIf="this.authService.logged">
+                            <button *ngIf="isUserJoined" type="button" (click)="leaveCategorie()" class="btn btn-danger">Leave</button>
+                            <button *ngIf="!isUserJoined" type="button"  (click)="joinCategorie()" class="btn btn-success">Join</button>
+                        </div>
+                        <div *ngIf="!this.authService.logged">
+                          <a  style="text-decoration: none;" [routerLink]="['/user/register']"><button type="button" class="btn btn-primary rounded-pill" style="background-color: white;color: black;border-color: black;font-style:inherit;margin-top: 15px;margin-bottom: 10px;">+ Join</button></a>
+            
+                        </div>
+                    </div>
+                    </li>
+                  </ul>
+                
+            </div>
+ 
+        
+        </div>
+                    
+    </div>
+ 
+<div
+class="search-results"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+(scrolled)="onScroll()"
+></div>

@@ -1,0 +1,30 @@
+ 
+
+.buffer{
+    width: 50%;
+    padding-bottom: 50px;;
+}
+ 
+
+  
+#thenavman{
+    border-style: solid;
+
+    background-color: black;;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-color: brown;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+  

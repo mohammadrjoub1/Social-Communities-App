@@ -1,0 +1,36 @@
+.card{
+    overflow: hidden;
+    display: block;
+    background-color: #1a1a1b;
+}
+.card-body{
+    max-height: 600px;
+    display: block;
+    overflow: hidden;
+    background-color: #1a1a1b;
+
+}
+
+ 
+  .theConent :hover{
+    opacity: 0.5;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  /* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}

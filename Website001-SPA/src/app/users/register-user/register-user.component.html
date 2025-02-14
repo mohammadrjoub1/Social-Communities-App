@@ -1,0 +1,60 @@
+<div class="row" style="margin: auto;">
+        <div class="container contact-form col-sm-8">
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <h3 style="color: white;">Register</h3>
+            <div >
+               
+                <div class="form-group" >
+                    <input type="text" [ngClass]="{'is-invalid':registerForm.get('username').errors && 
+                    registerForm.get('username').touched}"  formControlName="username" class="form-control" placeholder="username *" value="" />
+                    <div *ngIf="registerForm.get('username').hasError('required') && 
+                    registerForm.get('username').touched" class="invalid-feedback">Fill the username</div>
+                    <div *ngIf="registerForm.get('username').hasError('minlength') && 
+                    registerForm.get('username').touched" class="invalid-feedback">minimum length is 5 </div>
+                    <div *ngIf="registerForm.get('username').hasError('maxlength') && 
+                    registerForm.get('username').touched" class="invalid-feedback">maximum length is 120 </div>
+ 
+                </div>
+                <div class="form-group">
+                    <input type="text" [ngClass]="{'is-invalid':registerForm.get('email').errors && 
+                    registerForm.get('email').touched}"  formControlName="email" class="form-control" placeholder="email *" value="" />
+                    <div *ngIf="registerForm.get('email').hasError('required') && 
+                    registerForm.get('email').touched" class="invalid-feedback">Fill the email</div>
+                    <div *ngIf="registerForm.get('email').hasError('minlength') && 
+                    registerForm.get('email').touched" class="invalid-feedback">minimum length is 5 </div>
+                    <div *ngIf="registerForm.get('email').hasError('maxlength') && 
+                    registerForm.get('email').touched" class="invalid-feedback">maximum length is 120</div>
+                    <div *ngIf="registerForm.get('email').hasError('email') && 
+                    registerForm.get('email').touched" class="invalid-feedback">it has to be a valid email </div>
+
+                </div>
+                <div class="form-group">
+                    <input type="password" [ngClass]="{'is-invalid':registerForm.get('password').errors && 
+                    registerForm.get('password').touched}"  formControlName="password" class="form-control" placeholder="password *" value="" />
+                    <div *ngIf="registerForm.get('password').hasError('required') && 
+                    registerForm.get('password').touched" class="invalid-feedback">Fill the password</div>
+                    <div *ngIf="registerForm.get('password').hasError('minlength') && 
+                    registerForm.get('password').touched" class="invalid-feedback">minimum length is 8</div>
+                    <div *ngIf="registerForm.get('password').hasError('maxlength') && 
+                    registerForm.get('password').touched" class="invalid-feedback">maximum length is 200</div>
+
+                </div>
+                <div class="form-group">
+                    <input type="password" [ngClass]="{'is-invalid':
+                    registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch')}"  formControlName="confirmPassword" class="form-control" placeholder="confirm password *" value="" />
+                    <div *ngIf=" registerForm.hasError('mismatch')&& registerForm.get('confirmPassword').touched " class="invalid-feedback">passwords don't match</div>
+
+                </div>
+                <div *ngIf="registerForm.status=='VALID'" class="form-group" style="text-align: center;"  aria-disabled="true">
+                    <button type="button" (click)="register()" class="btn btn-primary btn-lg  rounded-pill" style=" display: inline;background-color: white;color: black;border-color: black;font-style:inherit;">Sign Up</button>
+               </div>
+               <div *ngIf="registerForm.status!='VALID'" class="form-group" style="text-align: center;" >
+                <a  style="text-align: center;" href="#" class="btn btn-primary btn-lg disabled rounded-pill" role="button" aria-disabled="true" style=" display: inline;background-color: white;color: black;border-color: black;font-style:inherit;">Sign Up</a>
+           </div>
+            </div>
+        
+    </form>
+</div>             
+</div>
+ 
